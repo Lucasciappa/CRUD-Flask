@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+<br>
+
+<!-- 24.- Manejo de mensajes de validación -->
+<!-- Lo que hacemos es recibir todos los mensajes utilizando flash -->
+{% with messages= get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<br>
+<div class="card">
+    <div class="card-header">
+        Registrate
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Ingresa tus datos</h5>
+        <p class="card-text">
+            <form method="post" action="/store" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" class="form-control" type="text" name="txtNombre">
+                </div>
+                <div class="form-group">
+                    <label for="txtCorreo">Correo:</label>
+                    <input id="txtCorreo" class="form-control" type="text" name="txtCorreo">
+                </div>
+                <div class="form-group">
+                    <label for="txtFoto">Foto:</label>
+                    <input id="txtFoto" class="form-control" type="file" name="txtFoto">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Agregar">
+                    <a href="{{url_for('index')}}" class="btn btn-primary">Volver</a>
+                </div>
+            </form>
+        </p>
+    </div>
+</div>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+<br>
+<div class="card">
+    <div class="card-header">
+        Editar Empleado
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos del nuevo empleado</h5>
+        <p class="card-text">
+            <form method="post" action="/update" enctype="multipart/form-data">
+                <input type="hidden" value="{{ empleado[0] }}" name="txtId" id="txtId">
+                <br>
+                <div class="form-group">
+                    <label for="txtNombre">Nombre:</label>
+                    <input id="txtNombre" class="form-control" value="{{ empleado[1] }}" type="text" name="txtNombre">
+                </div>
+                <div class="form-group">
+                    <label for="txtCorreo">Correo:</label>
+                    <input id="txtCorreo" class="form-control" value="{{ empleado[2] }}" type="text" name="txtCorreo">
+                </div>
+                <div class="form-group">
+                    <label for="txtFoto">Foto:</label>
+                    <br>
+                    <img src="{{url_for('uploads', nombreFoto=empleado[3])}}" width="100" alt="" class="img-thumbnail">
+                    <input id="txtFoto" class="form-control" type="file" name="txtFoto">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Actualizar">
+                    <a href="{{url_for('index')}}" class="btn btn-primary">Volver</a>
+                </div>
+            </form>
+        </p>
+    </div>
+</div>
+
+{% include 'footer.html' %}
